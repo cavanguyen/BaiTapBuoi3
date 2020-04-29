@@ -1,0 +1,58 @@
+Tổng quan về Machine learning
+Bài 1:
+classification: nếu các label của input data được chia thành một số hữu hạn nhóm.
+Regression: nếu label không được chia thành các nhóm mà là một giá trị thực cụ thể.
+
+Bài 2:
+Hyperparameter thường được quy định trước khi quá trình training diễn ra nó mang tính chất tương đối và quy ước.
+Parameter được tạo ra trong quá trình training. 
+
+Bài 3:
+Tùy thuật toán thì có thể có 5 parameter hoặc có 6 parameter
+
+Bài 4:
+Tìm model f(x) ta tìm bộ tham số w của model.
+
+Bài 5: 
+Để tìm bộ tham số của model ta cực tiểu hàm mất mát. Mà hàm mất mát chính là sai số giữa giá trị thực và giá trị mà model dự đoán ra.
+Bộ tham số thu được là bộ tham số làm cho hàm mất mát đạt giá trị cực tiểu.
+
+Bài 6:
+Validation set là bộ dữ liệu để chúng ta giám sát mô hình. Chúng ta sử dụng kết quả của mô hình ở training set và validation set để đưa ra các quyết định như điều chỉnh hyperparameter, bổ sung thêm dữ liệu...
+Testing được dùng để kiểm thử sau quá trình huấn luyện, còn validation set được sử dụng để kiểm thử trong quá trình huấn luyện. Vậy tại sao người ta lại không dùng Training set để kiểm thử luôn, mà lại phải có tập validation để kiểm thử. 
+
+Bài 7:
+Group: chính là các nhóm dữ liệu, mà các phần tử trong nhóm đó có các điểm tương đồng dựa vào một tiêu chí nào đó
+
+Bài 8:
+Các feature vectors trong các bài toán thực tế có thể có số chiều rất lớn, tới vài nghìn. Ngoài ra, số lượng các điểm dữ liệu cũng thường rất lớn. Nếu thực hiện lưu trữ và tính toán trực tiếp trên dữ liệu có số chiều cao này thì sẽ gặp khó khăn cả về việc lưu trữ và tốc độ tính toán. Vì vậy, giảm số chiều dữ liệu là một bước quan trọng trong nhiều bài toán.
+
+Bài 9:
+Hyperparameter thường được quy định trước khi quá trình training diễn ra nó mang tính chất tương đối và quy ước. Cho nên giá trị ban đầu không là giá trị tốt nhât. Việc chọn một tập
+các hyperparameter, training để tìm ra model rồi đo độ tốt của model trên test set. Tiếp tục quay lại với các hyperparameter khác nhau. Sau nhiều lần chọn ta tìm ra được tập giá trị có độ sai sót thấp nhất trên test set.
+
+Overfitting và Underfitting
+Bài 1:
+Overfitting: khi mô hình có độ chính xác cao với bộ dữ liệu huấn luyện, nhưng độ chính xác thấp với bộ dữ liệu mới (hay dữ liệu tổng thể).
+Nguyên nhân:
++ Nhiễu
++ Ít dữ liệu
++ Model quá phức tạp
+Giải pháp:
++ Tăng dữ liệu và sử dụng Early Stopping
++ Sử dụng regulazation
+
+Bài 2:
+Underfitting: khi mô hình có độ chính xác thấp trên cả bộ dữ liệu huấn luyện và bộ dữ liệu mô tả tổng thể mới.
+Khi Underfitting xảy ra, ta có thể khắc phục bằng cách thay đổi
+thuật toán hoặc là bổ sung thêm dữ liệu đầu vào
+
+Bài 3:
+L1 cố gắng giảm thiểu absolute value của các parameters trong models. Nó tạo ra sparse parameters.
+L2 cố gắng giảm thiểu square value của các parameters trong models. Nó tạo ra các parameters với small values.
+
+Bài 4:
+khi có thêm dữ liệu tức có thêm các cặp observation-label, hiển nhiên ta có thêm thông tin về mối quan hệ giữa chúng. Cụ thể hơn, ta thấy rằng, giả sử dùng cùng một loss function khi train và test,  sẽ hội tụ về  khi số lượng phần tử của  tiến đến vô cùng. Khi hai đại lượng này trùng nhau thì overfitting hoàn toàn biến mất. Vì thế, càng có nhiều dữ liệu huấn luyện thì càng ít bị overfitting.
+
+Bài 5:
+Ta phải đánh đổi giữa khả năng ghi nhớ và khả năng tổng quát hóa của model. Model muốn ghi nhớ càng tốt thì lại càng phải xử lý nhiều trường hợp ngoại lệ. Có khi, một observation  được gán label  theo một logic rất kì lạ và hiếm gặp. Lúc này, model phải đặt ra ngoại lệ. Việc đặt ra quá nhiều ngoại lệ làm model bớt tính tổng quát, vì ngoại lệ là những quy luật mà chỉ đúng với một số ít trường hợp. Để hạn chế những ngoại lệ này, ta chỉ cần model đoán "khá" chính xác trên train set mà thôi. Bù lại model sẽ tổng quát hơn và đoán chính xác hơn trên test set. Suy cho cùng, độ tốt trên test set mới là thứ ta quan tâm sau cùng.
